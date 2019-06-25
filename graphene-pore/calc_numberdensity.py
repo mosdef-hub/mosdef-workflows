@@ -62,7 +62,6 @@ def calc_number_density(gro_file, trj_file, top_file, area,
                           np.where(frame.xyz[-1, :, 1] < box_range[1])))
 
             if frame_range:
-                #if frame.time[0] == frame_range[0]:
                 if i == 0:
                     x = np.histogram(frame.xyz[0,indices,dim].flatten(), 
                         bins=n_bins, range=(box_range[0], box_range[1]))
@@ -73,7 +72,7 @@ def calc_number_density(gro_file, trj_file, top_file, area,
                             flatten(),bins=n_bins, range=(box_range[0],
                                 box_range[1]))[0]
             else:
-                if frame.time == 0:
+                if i == 0:
                     x = np.histogram(frame.xyz[0,indices,dim].flatten(), 
                         bins=n_bins, range=(box_range[0], box_range[1]))
                     rho = x[0]
