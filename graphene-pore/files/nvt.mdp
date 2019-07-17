@@ -1,7 +1,7 @@
 title       =il-methanol  NVT equilibration 
 ; Run parameters
 integrator  = md        ; leap-frog integrator
-nsteps      = 1000000     ; 2 * 50000 = 100 ps
+nsteps      = 100000     ; 2 * 50000 = 100 ps
 dt          = 0.001     ; 2 fs
 ; Output control
 nstxout     = 5000       ; save coordinates every 1.0 ps
