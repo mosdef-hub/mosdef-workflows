@@ -7,5 +7,5 @@ dependencies:
 
 Both can be installed by running the following commands:
 1. `git clone "github-link"`
-2. `cd "repo"
+2. `cd "repo"`
 3. `pip install -e .`
