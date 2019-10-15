@@ -4,7 +4,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import os
 import sys
-from mtools.gromacs.gromacs import make_comtrj
+from utils.make_comtrj import make_comtrj
 
 
 def calc_number_density(gro_file, trj_file, top_file, area,
