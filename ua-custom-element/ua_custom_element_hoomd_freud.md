@@ -2,6 +2,11 @@
 ## United-atom, custom-element workflow with HOOMD and Freud
 This workflow is designed to show users how to implement united-atom or coarse-grained particles into mbBuild and foyer. Additionally, we show how HOOMD and Freud can be used to conduct and analyze a molecular dynamics simulation
 
+You will need hoomd, freud, and gsd
+```
+conda install -c conda-forge hoomd freud gsd
+```
+
 
 ```python
 import mbuild as mb
@@ -325,5 +330,5 @@ fig.tight_layout()
 ```
 
 
-![png](ua_custom_element_hoomd_freud_files/ua_custom_element_hoomd_freud_29_0.png)
+![png](ua_custom_element_hoomd_freud_files/ua_custom_element_hoomd_freud_30_0.png)
 
