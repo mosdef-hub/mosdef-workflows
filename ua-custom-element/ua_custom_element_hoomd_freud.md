@@ -116,9 +116,9 @@ struc = ff.apply(mixture_box)
       'Creating custom element for {}'.format(element))
     /Users/ayang41/Programs/foyer/foyer/forcefield.py:395: UserWarning: Non-atomistic element type detected. Creating custom element for _CH3
       'Creating custom element for {}'.format(element))
-    /Users/ayang41/Programs/mbuild/mbuild/compound.py:2410: UserWarning: Guessing that "<_CH4 pos=( 0.0000, 0.0000, 0.0000), 0 bonds, id: 4631624392>" is element: "EP"
+    /Users/ayang41/Programs/mbuild/mbuild/compound.py:2410: UserWarning: Guessing that "<_CH4 pos=( 0.0000, 0.0000, 0.0000), 0 bonds, id: 4744964808>" is element: "EP"
       atom, element))
-    /Users/ayang41/Programs/mbuild/mbuild/compound.py:2410: UserWarning: Guessing that "<_OH pos=( 0.1400, 0.0000, 0.2200), 0 bonds, id: 4631651160>" is element: "EP"
+    /Users/ayang41/Programs/mbuild/mbuild/compound.py:2410: UserWarning: Guessing that "<_OH pos=( 0.1400, 0.0000, 0.2200), 0 bonds, id: 4744991744>" is element: "EP"
       atom, element))
     /Users/ayang41/anaconda3/envs/py36/lib/python3.6/site-packages/parmed/openmm/topsystem.py:238: OpenMMWarning: Adding what seems to be Urey-Bradley terms before Angles. This is unexpected, but the parameters will all be present in one form or another.
       'all be present in one form or another.', OpenMMWarning)
@@ -204,13 +204,13 @@ hoomd.run(1e7)
     notice(2): Neighbors included by diameter          : no
     notice(2): Neighbors excluded when in the same body: no
     ** starting run **
-    Time 00:00:10 | Step 1502330 / 10000000 | TPS 150233 | ETA 00:00:56
-    Time 00:00:20 | Step 3510251 / 10000000 | TPS 200792 | ETA 00:00:32
-    Time 00:00:30 | Step 5673045 / 10000000 | TPS 216279 | ETA 00:00:20
-    Time 00:00:40 | Step 7804726 / 10000000 | TPS 213168 | ETA 00:00:10
-    Time 00:00:50 | Step 9826524 / 10000000 | TPS 202180 | ETA 00:00:00
-    Time 00:00:50 | Step 10000000 / 10000000 | TPS 236886 | ETA 00:00:00
-    Average TPS: 197108
+    Time 00:00:10 | Step 1788991 / 10000000 | TPS 178893 | ETA 00:00:45
+    Time 00:00:20 | Step 3521548 / 10000000 | TPS 173256 | ETA 00:00:37
+    Time 00:00:30 | Step 5834394 / 10000000 | TPS 231284 | ETA 00:00:18
+    Time 00:00:40 | Step 7366746 / 10000000 | TPS 153167 | ETA 00:00:17
+    Time 00:00:50 | Step 9152229 / 10000000 | TPS 178548 | ETA 00:00:04
+    Time 00:00:53 | Step 10000000 / 10000000 | TPS 217517 | ETA 00:00:00
+    Average TPS: 185517
     ---------
     -- Neighborlist stats:
     178763 normal updates / 100000 forced updates / 0 dangerous updates
@@ -275,13 +275,10 @@ for frame in hoomd_traj:
     ch4_positions = np.array(frame.particles.position[ch4_particles])
     oh_positions = np.array(frame.particles.position[oh_particles])
 
-    ch3_ch3_rdf.compute(frame, reset=False)
-    ch4_ch4_rdf.compute(frame, reset=False)
-    oh_oh_rdf.compute(frame, reset=False)
-    
-    ch3_ch4_rdf.compute(frame, reset=False)
-    ch3_oh_rdf.compute(frame, reset=False)
-    ch4_oh_rdf.compute(frame, reset=False)
+    ch3_ch3_rdf.compute(frame, query_points=ch3_positions, reset=False)
+    ch4_ch4_rdf.compute(frame, query_points=ch4_positions, reset=False)
+    oh_oh_rdf.compute(frame, query_points=oh_positions, reset=False)
+
                    
 ```
 
@@ -294,39 +291,24 @@ Note: because the simulation is so short and small, the RDFs will have noise and
 import matplotlib
 %matplotlib inline
 import matplotlib.pyplot as plt
-fig, ax = plt.subplots(2,3, figsize=(10,6), sharex=True, sharey=True)
+fig, ax = plt.subplots(1,3, figsize=(10,6), sharex=True, sharey=True)
 
-ax[0,0].plot(ch3_ch3_rdf.bin_centers, ch3_ch3_rdf.rdf)
+ax[0].plot(ch3_ch3_rdf.bin_centers, ch3_ch3_rdf.rdf)
 ref_ch3_ch3 = np.loadtxt('ref/CH3-CH3.dat')
-ax[0,0].plot(ref_ch3_ch3[:,0], ref_ch3_ch3[:,1], linestyle='--')
-ax[0,0].set_ylabel("CH3-CH3 RDF")
-ax[0,0].set_xlim([0.1, 2])
-ax[0,0].set_ylim([0,2])
+ax[0].plot(ref_ch3_ch3[:,0], ref_ch3_ch3[:,1], linestyle='--')
+ax[0].set_ylabel("CH3-CH3 RDF")
+ax[0].set_xlim([0.1, 2])
+ax[0].set_ylim([0,2])
 
-ax[0,1].plot(ch4_ch4_rdf.bin_centers, ch4_ch4_rdf.rdf)
+ax[1].plot(ch4_ch4_rdf.bin_centers, ch4_ch4_rdf.rdf)
 ref_ch4_ch4 = np.loadtxt('ref/CH4-CH4.dat')
-ax[0,1].plot(ref_ch4_ch4[:,0], ref_ch4_ch4[:,1], linestyle='--')
-ax[0,1].set_ylabel("CH4-CH4 RDF")
+ax[1].plot(ref_ch4_ch4[:,0], ref_ch4_ch4[:,1], linestyle='--')
+ax[1].set_ylabel("CH4-CH4 RDF")
 
-ax[0,2].plot(oh_oh_rdf.bin_centers, oh_oh_rdf.rdf)
+ax[2].plot(oh_oh_rdf.bin_centers, oh_oh_rdf.rdf)
 ref_oh_oh = np.loadtxt('ref/OH-OH.dat')
-ax[0,2].plot(ref_oh_oh[:,0], ref_oh_oh[:,1], linestyle='--')
-ax[0,2].set_ylabel("OH-OH RDF")
-
-ax[1,0].plot(ch3_ch4_rdf.bin_centers, ch3_ch4_rdf.rdf)
-ref_ch3_ch4 = np.loadtxt('ref/CH3-CH4.dat')
-ax[1,0].plot(ref_ch3_ch4[:,0], ref_ch3_ch4[:,1], linestyle='--')
-ax[1,0].set_ylabel("CH3-CH4 RDF")
-
-ax[1,1].plot(ch3_oh_rdf.bin_centers, ch3_oh_rdf.rdf)
-ref_ch3_oh = np.loadtxt('ref/CH3-OH.dat')
-ax[1,1].plot(ref_ch3_oh[:,0], ref_ch3_oh[:,1], linestyle='--')
-ax[1,1].set_ylabel("CH3-OH RDF")
-
-ax[1,2].plot(ch4_oh_rdf.bin_centers, ch4_oh_rdf.rdf)
-ref_ch4_oh = np.loadtxt('ref/CH4-OH.dat')
-ax[1,2].plot(ref_ch4_oh[:,0], ref_ch4_oh[:,1], linestyle='--')
-ax[1,2].set_ylabel("CH4-OH RDF")
+ax[2].plot(ref_oh_oh[:,0], ref_oh_oh[:,1], linestyle='--')
+ax[2].set_ylabel("OH-OH RDF")
 
 fig.tight_layout()
 ```
