@@ -2,7 +2,7 @@
 ## United-atom, custom-element workflow with HOOMD and Freud
 This workflow is designed to show users how to implement united-atom or coarse-grained particles into mbBuild and foyer. Additionally, we show how HOOMD and Freud can be used to conduct and analyze a molecular dynamics simulation
 
-You will need hoomd, freud, and gsd
+You will need hoomd, freud (at least 2.0), and gsd
 ```
 conda install -c conda-forge hoomd freud gsd
 ```
@@ -110,15 +110,15 @@ ff = Forcefield(forcefield_files='ff.xml')
 struc = ff.apply(mixture_box)
 ```
 
-    /Users/ayang41/Programs/foyer/foyer/forcefield.py:334: UserWarning: Non-atomistic element type detected. Creating custom element for _OH
+    /Users/ayang41/Programs/foyer/foyer/forcefield.py:395: UserWarning: Non-atomistic element type detected. Creating custom element for _OH
       'Creating custom element for {}'.format(element))
-    /Users/ayang41/Programs/foyer/foyer/forcefield.py:334: UserWarning: Non-atomistic element type detected. Creating custom element for _CH4
+    /Users/ayang41/Programs/foyer/foyer/forcefield.py:395: UserWarning: Non-atomistic element type detected. Creating custom element for _CH4
       'Creating custom element for {}'.format(element))
-    /Users/ayang41/Programs/foyer/foyer/forcefield.py:334: UserWarning: Non-atomistic element type detected. Creating custom element for _CH3
+    /Users/ayang41/Programs/foyer/foyer/forcefield.py:395: UserWarning: Non-atomistic element type detected. Creating custom element for _CH3
       'Creating custom element for {}'.format(element))
-    /Users/ayang41/Programs/mbuild/mbuild/compound.py:2291: UserWarning: Guessing that "<_CH4 pos=( 0.0000, 0.0000, 0.0000), 0 bonds, id: 4758387736>" is element: "EP"
+    /Users/ayang41/Programs/mbuild/mbuild/compound.py:2410: UserWarning: Guessing that "<_CH4 pos=( 0.0000, 0.0000, 0.0000), 0 bonds, id: 4631624392>" is element: "EP"
       atom, element))
-    /Users/ayang41/Programs/mbuild/mbuild/compound.py:2291: UserWarning: Guessing that "<_OH pos=( 0.1400, 0.0000, 0.2200), 0 bonds, id: 4758459952>" is element: "EP"
+    /Users/ayang41/Programs/mbuild/mbuild/compound.py:2410: UserWarning: Guessing that "<_OH pos=( 0.1400, 0.0000, 0.2200), 0 bonds, id: 4631651160>" is element: "EP"
       atom, element))
     /Users/ayang41/anaconda3/envs/py36/lib/python3.6/site-packages/parmed/openmm/topsystem.py:238: OpenMMWarning: Adding what seems to be Urey-Bradley terms before Angles. This is unexpected, but the parameters will all be present in one form or another.
       'all be present in one form or another.', OpenMMWarning)
@@ -170,8 +170,8 @@ bonds.bond_coeff.set('CH3-OH', k=502416, r0=0.1430)
 
 ```
 
-    HOOMD-blue v2.5.2-266-g0eee30898 DOUBLE HPMC_MIXED SSE SSE2 SSE3 SSE4_1 
-    Compiled: 06/14/2019
+    HOOMD-blue v2.8.0-1-ga4de8f0a9 DOUBLE HPMC_MIXED SSE SSE2 SSE3 SSE4_1 
+    Compiled: 10/31/2019
     Copyright (c) 2009-2019 The Regents of the University of Michigan.
     -----
     You are using HOOMD-blue. Please cite the following:
@@ -198,19 +198,19 @@ dump = hoomd.dump.gsd('traj.gsd', 1000, group=all, overwrite=True)
 hoomd.run(1e7)
 ```
 
-    notice(2): Group "all" created containing 24 particles
     notice(2): -- Neighborlist exclusion statistics -- :
     notice(2): Particles with 0 exclusions             : 8
     notice(2): Particles with 1 exclusions             : 16
     notice(2): Neighbors included by diameter          : no
     notice(2): Neighbors excluded when in the same body: no
     ** starting run **
-    Time 00:00:10 | Step 2220839 / 10000000 | TPS 222084 | ETA 00:00:35
-    Time 00:00:20 | Step 4071276 / 10000000 | TPS 184984 | ETA 00:00:32
-    Time 00:00:30 | Step 5908680 / 10000000 | TPS 183740 | ETA 00:00:22
-    Time 00:00:40 | Step 7797258 / 10000000 | TPS 188858 | ETA 00:00:11
-    Time 00:00:49 | Step 10000000 / 10000000 | TPS 230682 | ETA 00:00:00
-    Average TPS: 201804
+    Time 00:00:10 | Step 1502330 / 10000000 | TPS 150233 | ETA 00:00:56
+    Time 00:00:20 | Step 3510251 / 10000000 | TPS 200792 | ETA 00:00:32
+    Time 00:00:30 | Step 5673045 / 10000000 | TPS 216279 | ETA 00:00:20
+    Time 00:00:40 | Step 7804726 / 10000000 | TPS 213168 | ETA 00:00:10
+    Time 00:00:50 | Step 9826524 / 10000000 | TPS 202180 | ETA 00:00:00
+    Time 00:00:50 | Step 10000000 / 10000000 | TPS 236886 | ETA 00:00:00
+    Average TPS: 197108
     ---------
     -- Neighborlist stats:
     178763 normal updates / 100000 forced updates / 0 dangerous updates
@@ -248,13 +248,15 @@ Initialize the freud RDF analysis objects
 
 
 ```python
-ch3_ch3_rdf = freud.density.RDF(rmax=2, dr=0.005)
-ch4_ch4_rdf = freud.density.RDF(rmax=2, dr=0.005)
-oh_oh_rdf = freud.density.RDF(rmax=2, dr=0.005)
+bins = 50
+r_max =2
+ch3_ch3_rdf = freud.density.RDF(bins, r_max)
+ch4_ch4_rdf = freud.density.RDF(bins, r_max)
+oh_oh_rdf = freud.density.RDF(bins, r_max)
 
-ch3_ch4_rdf = freud.density.RDF(rmax=2, dr=0.005)
-ch3_oh_rdf = freud.density.RDF(rmax=2, dr=0.005)
-ch4_oh_rdf = freud.density.RDF(rmax=2, dr=0.005)
+ch3_ch4_rdf = freud.density.RDF(bins, r_max)
+ch3_oh_rdf = freud.density.RDF(bins, r_max)
+ch4_oh_rdf = freud.density.RDF(bins, r_max)
 ```
 
 Iterating through each frame in the `HOOMDTrajectory`, identify the various types of particles, then compute and accumulate the various particle-particle RDFs
@@ -273,13 +275,13 @@ for frame in hoomd_traj:
     ch4_positions = np.array(frame.particles.position[ch4_particles])
     oh_positions = np.array(frame.particles.position[oh_particles])
 
-    ch3_ch3_rdf.accumulate(frame.configuration.box, ch3_positions, ch3_positions)
-    ch4_ch4_rdf.accumulate(frame.configuration.box, ch4_positions, ch4_positions)
-    oh_oh_rdf.accumulate(frame.configuration.box, oh_positions, oh_positions)
+    ch3_ch3_rdf.compute(frame, reset=False)
+    ch4_ch4_rdf.compute(frame, reset=False)
+    oh_oh_rdf.compute(frame, reset=False)
     
-    ch3_ch4_rdf.accumulate(frame.configuration.box, ch3_positions, ch4_positions)
-    ch3_oh_rdf.accumulate(frame.configuration.box, ch3_positions, oh_positions)
-    ch4_oh_rdf.accumulate(frame.configuration.box, ch4_positions, oh_positions)
+    ch3_ch4_rdf.compute(frame, reset=False)
+    ch3_oh_rdf.compute(frame, reset=False)
+    ch4_oh_rdf.compute(frame, reset=False)
                    
 ```
 
@@ -294,34 +296,34 @@ import matplotlib
 import matplotlib.pyplot as plt
 fig, ax = plt.subplots(2,3, figsize=(10,6), sharex=True, sharey=True)
 
-ax[0,0].plot(ch3_ch3_rdf.R, ch3_ch3_rdf.RDF)
+ax[0,0].plot(ch3_ch3_rdf.bin_centers, ch3_ch3_rdf.rdf)
 ref_ch3_ch3 = np.loadtxt('ref/CH3-CH3.dat')
 ax[0,0].plot(ref_ch3_ch3[:,0], ref_ch3_ch3[:,1], linestyle='--')
 ax[0,0].set_ylabel("CH3-CH3 RDF")
 ax[0,0].set_xlim([0.1, 2])
 ax[0,0].set_ylim([0,2])
 
-ax[0,1].plot(ch4_ch4_rdf.R, ch4_ch4_rdf.RDF)
+ax[0,1].plot(ch4_ch4_rdf.bin_centers, ch4_ch4_rdf.rdf)
 ref_ch4_ch4 = np.loadtxt('ref/CH4-CH4.dat')
 ax[0,1].plot(ref_ch4_ch4[:,0], ref_ch4_ch4[:,1], linestyle='--')
 ax[0,1].set_ylabel("CH4-CH4 RDF")
 
-ax[0,2].plot(oh_oh_rdf.R, oh_oh_rdf.RDF)
+ax[0,2].plot(oh_oh_rdf.bin_centers, oh_oh_rdf.rdf)
 ref_oh_oh = np.loadtxt('ref/OH-OH.dat')
 ax[0,2].plot(ref_oh_oh[:,0], ref_oh_oh[:,1], linestyle='--')
 ax[0,2].set_ylabel("OH-OH RDF")
 
-ax[1,0].plot(ch3_ch4_rdf.R, ch3_ch4_rdf.RDF)
+ax[1,0].plot(ch3_ch4_rdf.bin_centers, ch3_ch4_rdf.rdf)
 ref_ch3_ch4 = np.loadtxt('ref/CH3-CH4.dat')
 ax[1,0].plot(ref_ch3_ch4[:,0], ref_ch3_ch4[:,1], linestyle='--')
 ax[1,0].set_ylabel("CH3-CH4 RDF")
 
-ax[1,1].plot(ch3_oh_rdf.R, ch3_oh_rdf.RDF)
+ax[1,1].plot(ch3_oh_rdf.bin_centers, ch3_oh_rdf.rdf)
 ref_ch3_oh = np.loadtxt('ref/CH3-OH.dat')
 ax[1,1].plot(ref_ch3_oh[:,0], ref_ch3_oh[:,1], linestyle='--')
 ax[1,1].set_ylabel("CH3-OH RDF")
 
-ax[1,2].plot(ch4_oh_rdf.R, ch4_oh_rdf.RDF)
+ax[1,2].plot(ch4_oh_rdf.bin_centers, ch4_oh_rdf.rdf)
 ref_ch4_oh = np.loadtxt('ref/CH4-OH.dat')
 ax[1,2].plot(ref_ch4_oh[:,0], ref_ch4_oh[:,1], linestyle='--')
 ax[1,2].set_ylabel("CH4-OH RDF")
@@ -332,3 +334,8 @@ fig.tight_layout()
 
 ![png](ua_custom_element_hoomd_freud_files/ua_custom_element_hoomd_freud_30_0.png)
 
+
+
+```python
+
+```
