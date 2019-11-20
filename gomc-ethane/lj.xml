@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This XML file is designed for use with Foyer in the Molecular Simulation and Design Framework (github.com/mosdef-hub).-->
+<ForceField>
+  <!--XML units: kJ/mol for energies, nm for lengths, and radians for angles.-->
+  <!--For conversion from K to kJ/mol, we use: 1.38064852E-23*6.022140857E23/1000.-->
+  <AtomTypes>
+    <Type name="AR" class="AR" element="Ar" mass="39.948" def="[Ar]" />
+  </AtomTypes>
+  <HarmonicBondForce>
+    <!--TraPPE uses fixed bond lengths. Force constants shown here come from GAFF, limited to three significant figures.-->
+    <Bond class1="sp3(C) CH3" class2="sp3(C) CH3" length="0.154" k="250000" />
+  </HarmonicBondForce>
+  <HarmonicAngleForce/>
+  <RBTorsionForce>
+    <!--OPLS style torsions have been converted to Ryckaert-Bellemans style.-->
+  </RBTorsionForce>
+  <NonbondedForce coulomb14scale="0.0" lj14scale="0.0">
+    <Atom type="AR" charge="0" sigma="0.34" epsilon="0.997"/>
+  </NonbondedForce>
+</ForceField>

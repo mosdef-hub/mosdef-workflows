@@ -1,0 +1,54 @@
+PSF CHEQ EXT XPLOR
+
+         1 !NTITLE
+
+
+        10 !NATOM
+         1 SYS      1        LJ       Ar       AR       0.000000       39.9481           
+         2 SYS      2        LJ       Ar       AR       0.000000       39.9481           
+         3 SYS      3        LJ       Ar       AR       0.000000       39.9481           
+         4 SYS      4        LJ       Ar       AR       0.000000       39.9481           
+         5 SYS      5        LJ       Ar       AR       0.000000       39.9481           
+         6 SYS      6        LJ       Ar       AR       0.000000       39.9481           
+         7 SYS      7        LJ       Ar       AR       0.000000       39.9481           
+         8 SYS      8        LJ       Ar       AR       0.000000       39.9481           
+         9 SYS      9        LJ       Ar       AR       0.000000       39.9481           
+        10 SYS      10       LJ       Ar       AR       0.000000       39.9481           
+
+         0 !NBOND: bonds
+
+
+         0 !NTHETA: angles
+
+
+         0 !NPHI: dihedrals
+
+
+         0 !NIMPHI: impropers
+
+
+         0 !NDON: donors
+
+
+         0 !NACC: acceptors
+
+
+         0 !NNB
+
+         0         0         0         0         0         0         0         0
+         0         0
+
+        10         0 !NGRP NST2
+         0         1         0         1         1         0         2         1         0
+         3         1         0         4         1         0         5         1         0
+         6         1         0         7         1         0         8         1         0
+         9         1         0
+
+        10 !MOLNT
+         1         2         3         4         5         6         7         8
+         9        10
+
+         0         0 !NUMLP NUMLPH
+
+         0 !NCRTERM: cross-terms
+
