@@ -1,0 +1,15 @@
+HEADER   TraPPE UA 2 Ethane Dimer
+HEADER   Modified to actually just be a single unit
+HEADER   INTRAmolecular Energies [K]
+HEADER          bond stretching =      0.000
+HEADER            angle bending =      0.000
+HEADER                 torsions =      0.000
+HEADER            Lennard-Jones =      0.000
+HEADER                  Coulomb =      0.000
+HEADER              Special 1,5 =      0.000
+HEADER   INTERmolecular Energies [K]
+HEADER            Lennard-Jones =   -381.134
+HEADER                  Coulomb =      0.000
+ATOM      1 1CH3 Eth     1      31.151  23.298  28.438  1.00  1.00
+ATOM      2 2CH3 Eth     1      30.759  24.177  29.639  1.00  1.00
+END
