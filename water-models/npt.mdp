@@ -24,6 +24,6 @@ ref_t               = 300
 
 pcoupl              = Parrinello-Rahman
 pcoupltype          = isotropic
-tau-p               = 10
+tau-p               = 1
 ref-p               = 1
 compressibility     = 1e-5
