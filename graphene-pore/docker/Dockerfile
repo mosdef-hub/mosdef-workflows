@@ -9,23 +9,11 @@ USER root
 
 # Copy files
 COPY . / /tmp/
-#ADD . / /tmp/
 
 # Set workdir
 WORKDIR /tmp
 
 RUN apk add --no-cache git
-
-#RUN cd gromacs_files \
-#    && tar -xvf gromacs-2018.5.tar \
-#    && cd gromacs-2018.5 \
-#    && mkdir build \
-#    && cd build \
-#    && cmake .. -DGMX_BUILD_OWN_FFTW=ON -DREGRESSIONTEST_DOWNLOAD=ON -DCMAKE_INSTALL_PREFIX=/tmp \
-#    && make \
-#    && make check \
-#    && make install \
-#    && source /tmp/gromacs/bin/GMXRC
 
 RUN conda config --set always_yes yes --set changeps1 no \
     && conda config --add channels omnia \
