@@ -1,0 +1,6 @@
+mbuild
+foyer
+parmed
+openforcefield<0.6
+openmm
+mdtraj
