@@ -29,7 +29,8 @@ def potential_energy(jobs):
     ax.legend(loc=0)
     ax.set_xlabel('Time, ps')
     ax.set_ylabel('Potential energy, kJ/mol')
-    fig.savefig('potential_energy.png')
+
+    fig.savefig('potential_energy.png', bbox_inches='tight')
 
 
 def density(jobs):
@@ -53,7 +54,7 @@ def density(jobs):
 
     ax.legend(loc='lower right')
     ax.set_xlabel('Time, ps')
-    ax.set_ylabel(r'Density, $\text{kg}/\text{m}^3$')
+    ax.set_ylabel('Density, $kg/m^3$')
     fig.savefig('density.png')
 
 
