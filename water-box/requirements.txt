@@ -1,0 +1,5 @@
+numpy
+mbuild
+foyer
+mdtraj
+matplotlib
