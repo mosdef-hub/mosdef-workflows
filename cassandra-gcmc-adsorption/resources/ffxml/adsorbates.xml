@@ -1,0 +1,8 @@
+<ForceField>
+ <AtomTypes>
+  <Type name="CH4"  class="CH4"  element="_CH4"  mass="16.0430" def="_CH4"  desc="CH4, united atom" doi="10.1021/jp972543+"/>
+ </AtomTypes>
+ <NonbondedForce coulomb14scale="0" lj14scale="0">
+  <Atom type="CH4"  charge="0.00" sigma="0.373" epsilon="1.23054"/>
+ </NonbondedForce>
+</ForceField>

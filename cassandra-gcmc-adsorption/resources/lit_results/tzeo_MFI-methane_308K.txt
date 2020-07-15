@@ -1,0 +1,11 @@
+# From https://pubs.acs.org/doi/suppl/10.1021/jp4074224/suppl_file/jp4074224_si_001.txt
+# methane/MFI	T=308K
+# Pressure (pa), Loading molecule/uc
+6.000E+03	0.203
+2.210E+04	0.727
+4.918E+04	1.543
+1.218E+05	3.392
+3.168E+05	6.578
+8.397E+05	10.220
+2.243E+06	13.134
+6.000E+06	15.120

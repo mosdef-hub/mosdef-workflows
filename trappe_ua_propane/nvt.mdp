@@ -1,0 +1,51 @@
+
+title                     = NVT Equilibration
+; Run parameters
+integrator                = md        ; leap-frog integrator
+nsteps                    = 100000     ; 2 * 5000 = 10ps
+dt                        = 0.002     ; 2 fs
+
+; Output control
+nstxout                   = 500       ; Every 1.0 ps
+nstvout                   = 500
+nstenergy                 = 500
+nstlog                    = 500
+
+;Bond parameters
+continuation              = no
+constraint_algorithm    = lincs
+constraints             =   all-bonds
+lincs_iter              = 1
+lincs_order             = 4
+
+; Neighbor searching
+cutoff-scheme           = Verlet
+nstype                  = grid
+nstlist                 = 10
+rcoulomb                = 1.4
+rvdw                    = 1.4
+
+; Electrostatics
+coulombtype             = PME
+pme_order               = 4
+fourierspacing          = 0.16
+
+; Temperature coupling
+tcoupl                  = nose-hoover
+tc-grps                 = system
+tau_t                   = 0.4  
+ref_t                   = 300  
+
+; Pressure coupling
+pcoupl                 = no
+
+;Periodic boundary conditions
+pbc                     = xyz
+
+;Dispersion correction
+DispCorr                = EnerPres
+
+;Velocity generation
+gen_vel                 = yes
+gen_temp                = 300
+gen_seed                = -1
