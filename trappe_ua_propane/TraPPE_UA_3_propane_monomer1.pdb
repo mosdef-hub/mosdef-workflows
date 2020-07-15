@@ -1,0 +1,12 @@
+HEADER   TraPPE UA 3 Propane Monomer
+HEADER   INTRAmolecular Energies [K]
+HEADER          bond stretching =      0.000
+HEADER            angle bending =      0.179
+HEADER                 torsions =      0.000
+HEADER            Lennard-Jones =      0.000
+HEADER                  Coulomb =      0.000
+HEADER              Special 1,5 =      0.000
+ATOM      1 1CH3 Pro     1      22.350  27.578  12.698  1.00  1.00
+ATOM      2  CH2 Pro     1      22.991  26.213  12.385  1.00  1.00
+ATOM      3 2CH3 Pro     1      21.983  25.050  12.329  1.00  1.00
+END

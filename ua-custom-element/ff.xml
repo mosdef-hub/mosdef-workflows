@@ -1,0 +1,16 @@
+<ForceField>
+ <AtomTypes>
+  <Type name="OH" class="OH" element="_OH" mass="15.99940" def="[_OH]" desc="Oxygen in hydroxyl" doi="10.1021/jp003882x"/>
+  <Type name="CH4" class="CH4" element="_CH4" mass="16.04300" def="[_CH4]" desc="CH4, united atom" doi="10.1021/jp972543+"/>
+  <Type name="CH3" class="CH3" element="_CH3" mass="15.03500" def="[_CH3;X1]_OH" desc="CH3, united atom, attached to hydroxyl" doi="10.1021/jp003882x"/>
+ </AtomTypes>
+ <HarmonicBondForce>
+  <!-- CHX-OH -->
+  <Bond class1="CH3" class2="OH" length="0.1430" k="502416.0"/>
+   </HarmonicBondForce>
+  <NonbondedForce coulomb14scale="0" lj14scale="0">
+  <Atom type="OH" charge="-0.700" sigma="0.302" epsilon="0.773245"/>
+  <Atom type="CH4" charge="0.0" sigma="0.373" epsilon="1.23054"/>
+  <Atom type="CH3" charge="0.7" sigma="0.375" epsilon="0.814817"/>
+ </NonbondedForce>
+</ForceField>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This XML file is designed for use with Foyer in the Molecular Simulation and Design Framework (github.com/mosdef-hub).-->
+<ForceField>
+  <!--XML units: kJ/mol for energies, nm for lengths, and radians for angles.-->
+  <!--For conversion from K to kJ/mol, we use: 1.38064852E-23*6.022140857E23/1000.-->
+  <AtomTypes>
+    <Type name="TrUA_CH3_2" class="sp3(C) CH3" element="_CH3" mass="15.0347" def="[_CH3;X1][_CH2]" desc="UA general CH3" doi="10.1021/jp972543+"/>
+    <Type name="TrUA_CH2_3" class="sp3(C) CH2" element="_CH2" mass="14.0268" def="[_CH2;X2]([_CH3])[_CH3]" desc="UA general CH2" doi="10.1021/jp972543+"/>
+  </AtomTypes>
+  <HarmonicBondForce>
+    <!--TraPPE uses fixed bond lengths. Force constants shown here come from GAFF, limited to three significant figures.-->
+    <Bond class1="sp3(C) CH3" class2="sp3(C) CH2" length="0.154" k="250000"/>
+  </HarmonicBondForce>
+  <HarmonicAngleForce>
+    <Angle class1="sp3(C) CH3" class2="sp3(C) CH2" class3="sp3(C) CH3" angle="1.9897" k="519.65"/>
+  </HarmonicAngleForce>
+  <RBTorsionForce>
+    <!--OPLS style torsions have been converted to Ryckaert-Bellemans style.-->
+  </RBTorsionForce>
+  <NonbondedForce coulomb14scale="0.0" lj14scale="0.0">
+    <Atom type="TrUA_CH3_2" charge="0" sigma="0.375" epsilon="0.81482"/>
+    <Atom type="TrUA_CH2_3" charge="0" sigma="0.395" epsilon="0.38247"/>
+  </NonbondedForce>
+</ForceField>
