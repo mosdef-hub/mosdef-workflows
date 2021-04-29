@@ -1,0 +1,6 @@
+jupyter
+numpy
+mbuild
+foyer
+mdtraj
+matplotlib
