@@ -12,3 +12,4 @@ dependencies:
   - unyt
   - matplotlib
   - jupyterlab
+  - ipython=7.10.0
