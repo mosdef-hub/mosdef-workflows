@@ -1,0 +1,16 @@
+<ForceField>
+ <AtomTypes>
+  <Type name="opls_116" class="OW" element="O" mass="15.999" def="O" desc="water oxygen"/>
+  <Type name="opls_117" class="HW" element="H" mass="1.008" def="H" desc="water hydrogen"/>
+ </AtomTypes>
+ <HarmonicBondForce>
+  <Bond class1="OW" class2="HW" length="0.1" k="345000.0"/>
+ </HarmonicBondForce>
+ <HarmonicAngleForce>
+  <Angle class1="HW" class2="OW" class3="HW" angle="1.91061193" k="383.0"/>
+ </HarmonicAngleForce>
+ <NonbondedForce coulomb14scale="0.5" lj14scale="0.5">
+  <Atom type="opls_116" charge="-0.8476" sigma="0.316557" epsilon="0.650194"/>
+  <Atom type="opls_117" charge="0.4238" sigma="0.1" epsilon="0.0"/>
+ </NonbondedForce>
+</ForceField>
