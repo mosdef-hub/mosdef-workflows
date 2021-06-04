@@ -1,0 +1,7 @@
+numpy
+mbuild
+foyer
+mdtraj
+matplotlib
+gromacs
+openbabel
