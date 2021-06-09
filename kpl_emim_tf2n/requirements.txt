@@ -1,0 +1,5 @@
+matplotlib
+mbuild
+foyer
+panedr
+mdtraj

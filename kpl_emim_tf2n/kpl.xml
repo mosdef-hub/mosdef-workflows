@@ -1,0 +1,160 @@
+<ForceField>
+ <AtomTypes>
+  <Type name="kpl_010" class="NA" element="N" mass="14.0067" def="[N;X3;r5]1[C;X3;r5][N;X3;r5][C;X3;r5][C;X3;r5]1" desc="NA in CMIm" doi="10.1021/jp0362133"/>
+  <Type name="kpl_011" class="" element="C" mass="12.011" def="[C;X3;r5]1[N;%kpl_010][C;X3;r5][C;X3;r5][N;%kpl_010]1" desc="CR in CMIm" doi="10.1002/cphc.200700552"/>
+  <Type name="kpl_012" class="" element="C" mass="12.011" def="[C;X3;r5]1[C;X3;r5][N;%kpl_010][C;X3;r5][N;%kpl_010]1" desc="CW in CMIm" doi="10.1002/cphc.200700552"/>
+  <Type name="kpl_013a" class="" element="H" mass="1.008" def="H[C;%kpl_011]" desc="HA in CMIm" doi="10.1002/cphc.200700552"/>
+  <Type name="kpl_013b" class="" element="H" mass="1.008" def="H[C;%kpl_012]" desc="HB in CMIm" doi="10.1002/cphc.200700552"/>
+  <Type name="kpl_014" class="CT" element="C" mass="12.011" def="[C;X4][N;%kpl_010]" desc="C1 in CMIm" doi="10.1021/jp0362133"/>
+  <Type name="kpl_015" class="HC" element="H" mass="1.008" def="H[C;%kpl_014]" desc="H1 in CMIm" doi="10.1021/jp0362133"/>
+  <Type name="kpl_016" class="CT" element="C" mass="12.011" def="[C;X4](H)(H)(H)[C;%kpl_014]" desc="CE in CMIm" overrides="kpl_017,kpl_019" doi="10.1021/jp0362133"/>
+  <Type name="kpl_017" class="CT" element="C" mass="12.011" def="[C;X4]([C;%kpl_014])(C)" desc="C2 in CMIm" doi="10.1021/jp0362133" overrides="kpl_018"/>
+  <Type name="kpl_018" class="CT" element="C" mass="12.011" def="[C;X4](H)(H)(C)[C;%kpl_017,%kpl_018]" desc="CS in CMIm" doi="10.1021/jp0362133"/>
+  <Type name="kpl_019" class="CT" element="C" mass="12.011" def="[C;X4](H)(H)(H)[C;%kpl_018]" desc="CT in CMIm" doi="10.1021/jp0362133"/>
+  <Type name="kpl_020" class="HC" element="H" mass="1.008" def="H[C;%kpl_016,%kpl_017,%kpl_018,%kpl_019]" desc="HC in CMIm" doi="10.1021/jp0362133"/>
+  <Type name="kpl_021" class="" element="C" mass="12.011" def="C(F)(F)(F)S" desc="C in triflamides" doi="10.1002/cphc.200700552"/>
+  <Type name="kpl_022" class="" element="F" mass="18.9984" def="FC(F)(F)S" desc="F in triflamides" doi="10.1002/cphc.200700552"/>
+  <Type name="kpl_023" class="" element="S" mass="32.065" def="S(O)(O)C(F)(F)(F)" desc="S in triflamides" doi="10.1002/cphc.200700552"/>
+  <Type name="kpl_025" class="" element="O" mass="15.9994" def="OS(N)(O)C(F)(F)(F)" desc="O in Tf2N" doi="10.1002/cphc.200700552"/>
+  <Type name="kpl_026" class="" element="N" mass="14.0067" def="N(S(O)(O)(C))S(O)(O)(C)" desc="N in Tf2N" doi="10.1002/cphc.200700552"/>
+ </AtomTypes>
+ <HarmonicBondForce>
+  <Bond type1="kpl_011" type2="kpl_013a" length="0.108" k="284512"/>
+  <Bond type1="kpl_012" type2="kpl_013b" length="0.108" k="284512"/>
+  <Bond type1="kpl_011" type2="kpl_010" length="0.135" k="199600"/>
+  <Bond type1="kpl_012" type2="kpl_010" length="0.1378" k="178700"/>
+  <Bond type1="kpl_012" type2="kpl_012" length="0.1341" k="217600"/>
+  <Bond type1="kpl_010" type2="kpl_014" length="0.1466" k="141000"/>
+  <Bond type1="kpl_014" type2="kpl_015" length="0.109" k="284512"/>
+  <Bond type1="kpl_017" type2="kpl_020" length="0.109" k="284512"/>
+  <Bond type1="kpl_016" type2="kpl_020" length="0.109" k="284512"/>
+  <Bond type1="kpl_018" type2="kpl_020" length="0.109" k="284512"/>
+  <Bond type1="kpl_019" type2="kpl_020" length="0.109" k="284512"/>
+  <Bond type1="kpl_014" type2="kpl_017" length="0.1529" k="112100"/>
+  <Bond type1="kpl_014" type2="kpl_016" length="0.1529" k="112100"/>
+  <Bond type1="kpl_017" type2="kpl_018" length="0.1529" k="112100"/>
+  <Bond type1="kpl_017" type2="kpl_019" length="0.1529" k="112100"/>
+  <Bond type1="kpl_018" type2="kpl_018" length="0.1529" k="112100"/>
+  <Bond type1="kpl_018" type2="kpl_019" length="0.1529" k="112100"/>
+  <Bond type1="kpl_021" type2="kpl_022" length="0.1323" k="184850"/>
+  <Bond type1="kpl_021" type2="kpl_023" length="0.1818" k="98500"/>
+  <Bond type1="kpl_023" type2="kpl_025" length="0.1442" k="266550"/>
+  <Bond type1="kpl_023" type2="kpl_026" length="0.157" k="155650"/>
+ </HarmonicBondForce>
+ <HarmonicAngleForce>
+  <Angle type1="kpl_012" type2="kpl_010" type3="kpl_011" angle="1.8849555921538759" k="282.6"/>
+  <Angle type1="kpl_012" type2="kpl_010" type3="kpl_014" angle="2.192133540504878" k="282.6"/>
+  <Angle type1="kpl_011" type2="kpl_010" type3="kpl_014" angle="2.2060961745208325" k="282.6"/>
+  <Angle type1="kpl_010" type2="kpl_011" type3="kpl_013a" angle="2.1834068942449063" k="146.3"/>
+  <Angle type1="kpl_010" type2="kpl_011" type3="kpl_010" angle="1.9163715186897738" k="292.6"/>
+  <Angle type1="kpl_010" type2="kpl_012" type3="kpl_012" angle="1.8692476288859268" k="292.6"/>
+  <Angle type1="kpl_010" type2="kpl_012" type3="kpl_013b" angle="2.129301687433082" k="146.3"/>
+  <Angle type1="kpl_012" type2="kpl_012" type3="kpl_013b" angle="2.2846359908605773" k="146.3"/>
+  <Angle class1="NA" class2="CT" class3="HC" angle="1.93207948" k="156.6"/>
+  <Angle class1="CT" class2="CT" class3="HC" angle="1.93207948" k="156.6"/>
+  <Angle type1="kpl_010" type2="kpl_014" type3="kpl_015" angle="1.93207948" k="156.6"/>
+  <Angle type1="kpl_017" type2="kpl_014" type3="kpl_015" angle="1.93207948" k="156.6"/>
+  <Angle type1="kpl_016" type2="kpl_014" type3="kpl_015" angle="1.93207948" k="156.6"/>
+  <Angle type1="kpl_014" type2="kpl_017" type3="kpl_020" angle="1.93207948" k="156.6"/>
+  <Angle type1="kpl_014" type2="kpl_016" type3="kpl_020" angle="1.93207948" k="156.6"/>
+  <Angle type1="kpl_017" type2="kpl_018" type3="kpl_020" angle="1.93207948" k="156.6"/>
+  <Angle type1="kpl_017" type2="kpl_019" type3="kpl_020" angle="1.93207948" k="156.6"/>
+  <Angle class1="NA" class2="CT" class3="CT" angle="1.96698607" k="418.4"/>
+  <Angle class1="CT" class2="CT" class3="CT" angle="1.96698607" k="418.4"/>
+  <Angle type1="kpl_010" type2="kpl_014" type3="kpl_017" angle="1.96698607" k="418.4"/>
+  <Angle type1="kpl_010" type2="kpl_014" type3="kpl_016" angle="1.96698607" k="418.4"/>
+  <Angle type1="kpl_014" type2="kpl_017" type3="kpl_018" angle="1.96698607" k="418.4"/>
+  <Angle type1="kpl_014" type2="kpl_017" type3="kpl_019" angle="1.96698607" k="418.4"/>
+  <Angle type1="kpl_017" type2="kpl_018" type3="kpl_019" angle="1.96698607" k="418.4"/>
+  <Angle type1="kpl_018" type2="kpl_018" type3="kpl_019" angle="1.96698607" k="418.4"/>
+  <Angle class1="HC" class2="CT" class3="HC" angle="1.88146493" k="138.1"/>
+  <Angle type1="kpl_015" type2="kpl_014" type3="kpl_015" angle="1.88146493" k="138.1"/>
+  <Angle type1="kpl_020" type2="kpl_017" type3="kpl_020" angle="1.88146493" k="138.1"/>
+  <Angle type1="kpl_020" type2="kpl_016" type3="kpl_020" angle="1.88146493" k="138.1"/>
+  <Angle type1="kpl_020" type2="kpl_018" type3="kpl_020" angle="1.88146493" k="138.1"/>
+  <Angle type1="kpl_020" type2="kpl_019" type3="kpl_020" angle="1.88146493" k="138.1"/>
+  <Angle type1="kpl_022" type2="kpl_021" type3="kpl_022" angle="1.8692476288859268" k="781.0"/>
+  <Angle type1="kpl_023" type2="kpl_021" type3="kpl_022" angle="1.9512781037296603" k="694.0"/>
+  <Angle type1="kpl_021" type2="kpl_023" type3="kpl_025" angle="1.790707812546182" k="870"/>
+  <Angle type1="kpl_025" type2="kpl_023" type3="kpl_025" angle="2.0682151636132806" k="969"/>
+  <Angle type1="kpl_025" type2="kpl_023" type3="kpl_026" angle="1.9826940302655582" k="789"/>
+  <Angle type1="kpl_021" type2="kpl_023" type3="kpl_026" angle="1.7488199104983182" k="816"/>
+  <Angle type1="kpl_023" type2="kpl_026" type3="kpl_023" angle="2.192133540504878" k="671"/>
+ </HarmonicAngleForce>
+ <RBTorsionForce>
+  <Proper type1="kpl_014" type2="kpl_010" type3="kpl_011" type4="kpl_010" c0="19.46" c1="0.0" c2="-19.46" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_014" type2="kpl_010" type3="kpl_011" type4="kpl_013a" c0="19.46" c1="0.0" c2="-19.46" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_012" type2="kpl_010" type3="kpl_011" type4="kpl_010" c0="19.46" c1="0.0" c2="-19.46" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_012" type2="kpl_010" type3="kpl_011" type4="kpl_013a" c0="19.46" c1="0.0" c2="-19.46" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_010" type2="kpl_012" type3="kpl_012" type4="kpl_010" c0="44.98" c1="0.0" c2="-44.98" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_010" type2="kpl_012" type3="kpl_012" type4="kpl_013b" c0="44.98" c1="0.0" c2="-44.98" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_013b" type2="kpl_012" type3="kpl_012" type4="kpl_013b" c0="44.98" c1="0.0" c2="-44.98" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_014" type2="kpl_010" type3="kpl_012" type4="kpl_013b" c0="12.55" c1="0.0" c2="-12.55" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_014" type2="kpl_010" type3="kpl_012" type4="kpl_012" c0="12.55" c1="0.0" c2="-12.55" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_011" type2="kpl_010" type3="kpl_012" type4="kpl_013b" c0="12.55" c1="0.0" c2="-12.55" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_011" type2="kpl_010" type3="kpl_012" type4="kpl_012" c0="12.55" c1="0.0" c2="-12.55" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_012" type2="kpl_010" type3="kpl_014" type4="kpl_015" c0="0.2595" c1="0.7785" c2="0" c3="-1.038" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_011" type2="kpl_010" type3="kpl_014" type4="kpl_015" c0="0.0" c1="0.0" c2="0" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_012" type2="kpl_010" type3="kpl_014" type4="kpl_017" c0="2.926" c1="4.768" c2="-6.106" c3="-1.588" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_012" type2="kpl_010" type3="kpl_014" type4="kpl_016" c0="2.926" c1="4.768" c2="-6.106" c3="-1.588" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_012" type2="kpl_010" type3="kpl_014" type4="kpl_016" c0="-2.6345" c1="2.6345" c2="0.0" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_011" type2="kpl_010" type3="kpl_014" type4="kpl_017" c0="-2.6345" c1="2.6345" c2="0.0" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_011" type2="kpl_010" type3="kpl_014" type4="kpl_016" c0="-2.6345" c1="2.6345" c2="0.0" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_012" type2="kpl_010" type3="kpl_014" type4="kpl_017" c0="-2.6345" c1="2.6345" c2="0.0" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_010" type2="kpl_014" type3="kpl_017" type4="kpl_018" c0="-1.1775" c1="1.9335" c2="-3.164" c3="2.406" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_010" type2="kpl_014" type3="kpl_017" type4="kpl_019" c0="-1.1775" c1="1.9335" c2="-3.164" c3="2.406" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_010" type2="kpl_014" type3="kpl_016" type4="kpl_020" c0="0.0" c1="0.0" c2="0.0" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper type1="kpl_010" type2="kpl_014" type3="kpl_017" type4="kpl_020" c0="0.0" c1="0.0" c2="0.0" c3="0.0" c4="0.0" c5="0.0"/>
+  <Proper class1="HC" class2="CT" class3="CT" class4="CT" c0="0.7655" c1="2.2965" c2="0" c3="-3.062" c4="0" c5="0"/>
+  <Proper type1="kpl_015" type2="kpl_014" type3="kpl_017" type4="kpl_018" c0="0.7655" c1="2.2965" c2="0" c3="-3.062" c4="0" c5="0"/>
+  <Proper type1="kpl_015" type2="kpl_014" type3="kpl_017" type4="kpl_019" c0="0.7655" c1="2.2965" c2="0" c3="-3.062" c4="0" c5="0"/>
+  <Proper type1="kpl_020" type2="kpl_017" type3="kpl_018" type4="kpl_019" c0="0.7655" c1="2.2965" c2="0" c3="-3.062" c4="0" c5="0"/>
+  <Proper type1="kpl_020" type2="kpl_017" type3="kpl_018" type4="kpl_018" c0="0.7655" c1="2.2965" c2="0" c3="-3.062" c4="0" c5="0"/>
+  <Proper type1="kpl_020" type2="kpl_018" type3="kpl_018" type4="kpl_018" c0="0.7655" c1="2.2965" c2="0" c3="-3.062" c4="0" c5="0"/>
+  <Proper type1="kpl_020" type2="kpl_018" type3="kpl_018" type4="kpl_019" c0="0.7655" c1="2.2965" c2="0" c3="-3.062" c4="0" c5="0"/>
+  <Proper type1="kpl_020" type2="kpl_018" type3="kpl_018" type4="kpl_017" c0="0.7655" c1="2.2965" c2="0" c3="-3.062" c4="0" c5="0"/>
+  <Proper type1="kpl_020" type2="kpl_018" type3="kpl_017" type4="kpl_014" c0="0.7655" c1="2.2965" c2="0" c3="-3.062" c4="0" c5="0"/>
+  <Proper type1="kpl_020" type2="kpl_019" type3="kpl_018" type4="kpl_018" c0="0.7655" c1="2.2965" c2="0" c3="-3.062" c4="0" c5="0"/>
+  <Proper type1="kpl_020" type2="kpl_019" type3="kpl_018" type4="kpl_017" c0="0.7655" c1="2.2965" c2="0" c3="-3.062" c4="0" c5="0"/>
+  <Proper class1="HC" class2="CT" class3="CT" class4="HC" c0="0.6655" c1="1.9965" c2="0" c3="-2.662" c4="0" c5="0"/>
+  <Proper type1="kpl_015" type2="kpl_014" type3="kpl_017" type4="kpl_020" c0="0.6655" c1="1.9965" c2="0" c3="-2.662" c4="0" c5="0"/>
+  <Proper type1="kpl_015" type2="kpl_014" type3="kpl_016" type4="kpl_020" c0="0.6655" c1="1.9965" c2="0" c3="-2.662" c4="0" c5="0"/>
+  <Proper type1="kpl_020" type2="kpl_017" type3="kpl_018" type4="kpl_020" c0="0.6655" c1="1.9965" c2="0" c3="-2.662" c4="0" c5="0"/>
+  <Proper type1="kpl_020" type2="kpl_017" type3="kpl_019" type4="kpl_020" c0="0.6655" c1="1.9965" c2="0" c3="-2.662" c4="0" c5="0"/>
+  <Proper type1="kpl_020" type2="kpl_019" type3="kpl_018" type4="kpl_020" c0="0.6655" c1="1.9965" c2="0" c3="-2.662" c4="0" c5="0"/>
+  <Proper class1="CT" class2="CT" class3="CT" class4="CT" c0="3.5665" c1="-1.8895" c2="0.657" c3="-2.334" c4="0" c5="0"/>
+  <Proper type1="kpl_019" type2="kpl_018" type3="kpl_018" type4="kpl_018" c0="3.5665" c1="-1.8895" c2="0.657" c3="-2.334" c4="0" c5="0"/>
+  <Proper type1="kpl_019" type2="kpl_018" type3="kpl_018" type4="kpl_017" c0="3.5665" c1="-1.8895" c2="0.657" c3="-2.334" c4="0" c5="0"/>
+  <Proper type1="kpl_019" type2="kpl_018" type3="kpl_017" type4="kpl_014" c0="3.5665" c1="-1.8895" c2="0.657" c3="-2.334" c4="0" c5="0"/>
+  <Proper type1="kpl_018" type2="kpl_018" type3="kpl_017" type4="kpl_014" c0="3.5665" c1="-1.8895" c2="0.657" c3="-2.334" c4="0" c5="0"/>
+  <Proper type1="kpl_018" type2="kpl_018" type3="kpl_018" type4="kpl_017" c0="3.5665" c1="-1.8895" c2="0.657" c3="-2.334" c4="0" c5="0"/>
+  <Proper type1="kpl_022" type2="kpl_021" type3="kpl_023" type4="kpl_025" c0="0.7255" c1="2.1765" c2="0" c3="-2.902" c4="0" c5="0"/>
+  <Proper type1="kpl_023" type2="kpl_026" type3="kpl_023" type4="kpl_025" c0="-0.0075" c1="-0.0225" c2="0" c3="0.03" c4="0" c5="0"/>
+  <Proper type1="kpl_022" type2="kpl_021" type3="kpl_023" type4="kpl_026" c0="0.661" c1="1.983" c2="0" c3="-2.644" c4="0" c5="0"/>
+  <Proper type1="kpl_023" type2="kpl_026" type3="kpl_023" type4="kpl_021" c0="4.369" c1="-21.179" c2="10.42" c3="6.39" c4="0" c5="0"/>
+ </RBTorsionForce>
+ <PeriodicTorsionForce>
+  <Improper type1="kpl_010" type2="" type3="" type4="" periodicity1="2" phase1="3.14159265359" k1="4.185"/>
+  <Improper type1="kpl_011" type2="" type3="" type4="" periodicity1="2" phase1="3.14159265359" k1="4.6"/>
+  <Improper type1="kpl_012" type2="" type3="" type4="" periodicity1="2" phase1="3.14159265359" k1="4.6"/>
+ </PeriodicTorsionForce>
+ <NonbondedForce coulomb14scale="0.5" lj14scale="0.5">
+  <Atom type="kpl_010" charge="0.15" sigma="0.325" epsilon="0.71128"/>
+  <Atom type="kpl_011" charge="-0.11" sigma="0.213" epsilon="0.43932"/>
+  <Atom type="kpl_012" charge="-0.13" sigma="0.30175" epsilon="0.20501"/>
+  <Atom type="kpl_013a" charge="0.21" sigma="0.1452" epsilon="0.18828"/>
+  <Atom type="kpl_013b" charge="0.21" sigma="0.2057" epsilon="0.0879"/>
+  <Atom type="kpl_014" charge="-0.17" sigma="0.35" epsilon="0.27614"/>
+  <Atom type="kpl_015" charge="0.13" sigma="0.25" epsilon="0.12552"/>
+  <Atom type="kpl_016" charge="-0.05" sigma="0.35" epsilon="0.27614"/>
+  <Atom type="kpl_017" charge="0.01" sigma="0.35" epsilon="0.27614"/>
+  <Atom type="kpl_018" charge="-0.12" sigma="0.35" epsilon="0.27614"/>
+  <Atom type="kpl_019" charge="-0.18" sigma="0.35" epsilon="0.27614"/>
+  <Atom type="kpl_020" charge="0.06" sigma="0.25" epsilon="0.12552"/>
+  <Atom type="kpl_021" charge="0.35" sigma="0.315" epsilon="0.08282"/>
+  <Atom type="kpl_022" charge="-0.16" sigma="0.2655" epsilon="0.06651"/>
+  <Atom type="kpl_023" charge="1.02" sigma="0.40825" epsilon="0.31372"/>
+  <Atom type="kpl_025" charge="-0.53" sigma="0.34632" epsilon="0.26353"/>
+  <Atom type="kpl_026" charge="-0.66" sigma="0.325" epsilon="0.21333"/>
+ </NonbondedForce>
+</ForceField>
