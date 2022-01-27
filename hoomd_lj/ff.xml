@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ForceField >
+<ForceField ForceField name="LJ_FF" version="0.0.1" combining_rule="geometric">
   <!--XML units: kJ/mol for energies, nm for lengths, and radians for angles.-->
   <AtomTypes>
     <Type name="Ar" class="Ar" element="Ar" mass="39.948" def="[Ar]" desc="LJ Argon"/>
