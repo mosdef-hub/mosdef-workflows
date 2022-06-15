@@ -1,0 +1,48 @@
+<ForceField>
+ <!-- Shown below are example entries for force field parameters.
+
+ Please refer to the OpenMM .xml specs for more info:
+ http://docs.openmm.org/7.0.0/userguide/application.html#writing-the-xml-file-->
+ <AtomTypes>
+  <Type name="BBA" class="BB" element="_BBA" mass="1" def="[_BBA]"/>
+  <Type name="BBC" class="BB" element="_BBC" mass="1" def="[_BBC]"/>
+  <Type name="BBG" class="BB" element="_BBG" mass="1" def="[_BBG]"/>
+  <Type name="BBT" class="BB" element="_BBT" mass="1" def="[_BBT]"/>
+  <Type name="HBA" class="HB" element="_HBA" mass="0.15" def="[_HBA]"/>
+  <Type name="HBC" class="HB" element="_HBC" mass="0.15" def="[_HBC]"/>
+  <Type name="HBG" class="HB" element="_HBG" mass="0.15" def="[_HBG]"/>
+  <Type name="HBT" class="HB" element="_HBT" mass="0.15" def="[_HBT]"/>
+ </AtomTypes>
+
+ <HarmonicBondForce>
+  <!-- Note: units of k are in eps/sigma^2-->
+  <Bond class1="BB" class2="BB" length="0.084" k="836820.083682"/>
+  <Bond class1="BB" class2="HB" length="0.037" k="836820.083682"/>
+ </HarmonicBondForce>
+ <HarmonicAngleForce>
+  <!-- Note: units of k are in eps/rad^2-->
+  <Angle class1="BB" class2="BB" class3="BB" angle="3.1415926536" k="2510.39022621"/>
+  <Angle class1="HB" class2="BB" class3="BB" angle="1.57079632679" k="25103.9022621"/>
+ </HarmonicAngleForce>
+ <PeriodicTorsionForce>
+  <!-- Note, the units of k are in eps-->
+  <Proper type1="HBC" type2="BBC" type3="BBC" type4="HBC" periodicity1="1" phase1="0" k1="12.5523"/>
+  <Proper type1="HBC" type2="BBC" type3="BBT" type4="HBT" periodicity1="1" phase1="0" k1="12.5523"/>
+  <Proper type1="HBT" type2="BBT" type3="BBC" type4="HBC" periodicity1="1" phase1="0" k1="12.5523"/>
+  <Proper type1="HBT" type2="BBT" type3="BBT" type4="HBT" periodicity1="1" phase1="0" k1="12.5523"/>
+  <Proper type1="HBA" type2="BBA" type3="BBT" type4="HBT" periodicity1="1" phase1="0" k1="12.5523"/>
+  <Proper type1="HBT" type2="BBT" type3="BBA" type4="HBA" periodicity1="1" phase1="0" k1="12.5523"/>
+
+  <Proper type1="HBG" type2="BBG" type3="BBT" type4="HBT" periodicity1="1" phase1="0" k1="25.1046"/> 
+  <Proper type1="HBT" type2="BBT" type3="BBG" type4="HBG" periodicity1="1" phase1="0" k1="25.1046"/> 
+  <Proper type1="HBG" type2="BBG" type3="BBC" type4="HBC" periodicity1="1" phase1="0" k1="25.1046"/> 
+  <Proper type1="HBC" type2="BBC" type3="BBG" type4="HBG" periodicity1="1" phase1="0" k1="25.1046"/> 
+  <Proper type1="HBA" type2="BBA" type3="BBC" type4="HBC" periodicity1="1" phase1="0" k1="25.1046"/> 
+  <Proper type1="HBC" type2="BBC" type3="BBA" type4="HBA" periodicity1="1" phase1="0" k1="25.1046"/> 
+
+  <Proper type1="HBG" type2="BBG" type3="BBG" type4="HBG" periodicity1="1" phase1="0" k1="37.6569"/>
+  <Proper type1="HBA" type2="BBA" type3="BBA" type4="HBA" periodicity1="1" phase1="0" k1="37.6569"/>
+  <Proper type1="HBG" type2="BBG" type3="BBA" type4="HBA" periodicity1="1" phase1="0" k1="37.6569"/>
+  <Proper type1="HBA" type2="BBA" type3="BBG" type4="HBG" periodicity1="1" phase1="0" k1="37.6569"/>
+ </PeriodicTorsionForce>
+</ForceField>
