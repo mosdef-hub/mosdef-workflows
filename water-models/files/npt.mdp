@@ -1,0 +1,29 @@
+constraints         = all-angles
+integrator          = md
+nsteps              = 1000000
+dt                  = 0.001
+
+nstxtcout           = 1000
+nstenergy           = 1000
+nstlog              = 1000
+
+cutoff-scheme       = Verlet
+ns_type             = grid
+nstlist             = 10
+rcoulomb            = 0.9
+rvdw                = 0.9 
+
+coulombtype         = PME
+
+gen_vel             = no
+
+tcoupl              = nose-hoover
+tc-grps             = System
+tau_t               = 1
+ref_t               = 300
+
+pcoupl              = Parrinello-Rahman
+pcoupltype          = isotropic
+tau-p               = 2
+ref-p               = 1
+compressibility     = 1e-5
